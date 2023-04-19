@@ -11,17 +11,20 @@ describe("Token", () => {
 
   beforeEach(async () => {
     const Token = await ethers.getContractFactory("Token");
-    token = await Token.deploy();
+    token = await Token.deploy("Andrew Token", "ATOK", "1000000");
+
+    // let accounts = Token.getSigners();
+    // let deployer = accounts[0];
   });
 
-  it("Has a name", async () => {
+  it("Has correct name", async () => {
     //Check that name is correct
-    expect(await token.name()).to.equal("AndrewToken");
+    expect(await token.name()).to.equal("Andrew Token");
   });
 
-  it("Has a symbol", async () => {
+  it("Has correct symbol", async () => {
     //Check that symbol is correct
-    expect(await token.symbol()).to.equal("AGB");
+    expect(await token.symbol()).to.equal("ATOK");
   });
   it("Has correct decimals", async () => {
     //Check that symbol is correct
